@@ -1,0 +1,27 @@
+# Default ignored files
+target/
+
+.idea
+*.iws
+*.iml
+*.ipr
+
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+.vscode/
+
+.DS_Store
+
+.mvn
+
+*.jar
