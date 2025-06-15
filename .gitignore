@@ -6,6 +6,12 @@ target/
 *.iml
 *.ipr
 
+*.csv
+
+.java-version
+
+grafana/
+
 .apt_generated
 .classpath
 .factorypath

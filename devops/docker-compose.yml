@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  prometheus:
+    image: 'prom/prometheus:v2.14.0'
+    ports:
+      - '9090:9090'
+    command: '--config.file=/etc/prometheus/config.yml'
+    volumes:
+      - './prometheus.yml:/etc/prometheus/config.yml'
+  grafana:
+    image: grafana/grafana-oss:8.5.2
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./grafana:/var/lib/grafana
+    user: '104'
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SERVER_DOMAIN=127.0.0.1
