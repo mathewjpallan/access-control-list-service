@@ -34,8 +34,8 @@ public class AccessControlManager {
                 BitSet aclBitset = aclEntry.getValue();
 
                 // Check if the user's bit position for this attribute is set in the ACL's BitSet
-                int userBitPosition = userProfileToBitPositions.get(aclKey);
-                if (!aclBitset.get(userBitPosition)) {
+                Integer userBitPosition = userProfileToBitPositions.get(aclKey);
+                if (userBitPosition == null || !aclBitset.get(userBitPosition)) {
                     matchesAllAttributes = false;
                     break;
                 }

@@ -120,5 +120,46 @@ do_1234567890987654321_334,designation334/designation58371/designation27476/desi
 * docker run -p 8080:8080 --memory 2g --cpus 2 acl-service:0.0.1 
 * If you want to see metrics, you can run docker-compose up from the devops folder. This will bring up prometheus and grafana. prometheus.yml targets will need to be updated based on the docker networking used. After grafana comes up, a datasource has to be configured and the url used(localhost:9090) will also need to change depending on docker networking. On podman desktop, i was using 'host.containers.internal:8080' as the target in prometheus and http://prometheus:9090 as the promtheus url within grafana.
 
+There are 2 APIs and the curls for them are attached.
+
+```json
+The below API checks if the user profile has access to the courseID in the path param
+curl -X POST http://localhost:8080/access/check/do_1234567890987654321_334 \
+  -H "Content-Type: application/json" \
+  -d '{
+        "designation": "designation97831",
+        "dept": "department of test66662",
+        "batch": "Batch of test7791",
+        "service": "Service of test6029",
+        "group": "Group of test95",
+        "cadre": "Cadre of test9988",
+        "profile_status": "ProfileStatus of test55"
+}'
+
+and
+The below API checks if the user profile has access to the list of courses
+curl -X POST http://localhost:8080/access/check/courses \
+-H "Content-Type: application/json" \
+-d '{
+      "courses": [
+        "do_1234567890987654321_334",
+        "do_1234567890987654321_2202",
+        "do_1234567890987654321_2",
+        "do_1234567890987654321_3",
+        "do_1234567890987654321_4",
+        "do_1234567890987654321_6"
+      ],
+      "userProfile": {
+        "designation": "designation97831",
+        "dept": "department of test66662",
+        "batch": "Batch of test7791",
+        "service": "Service of test6029",
+        "group": "Group of test95",
+        "cadre": "Cadre of test9988",
+        "profile_status": "ProfileStatus of test55"
+      }
+}'
+
+```
 ### Load testing
 The jmx file is setup to load test the API for access checks.
