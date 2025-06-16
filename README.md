@@ -117,7 +117,7 @@ do_1234567890987654321_334,designation334/designation58371/designation27476/desi
 ### Running the code
 * Run mvn clean install to build the project after cloning the project
 * Execute the devops/build.sh to generate a docker image after the build is successful
-* docker run -p 8080:8080 acl-service:0.0.1 --memory 2g --cpus 2
+* docker run -p 8080:8080 --memory 2g --cpus 2 acl-service:0.0.1 
 * If you want to see metrics, you can run docker-compose up from the devops folder. This will bring up prometheus and grafana. prometheus.yml targets will need to be updated based on the docker networking used. After grafana comes up, a datasource has to be configured and the url used(localhost:9090) will also need to change depending on docker networking. On podman desktop, i was using 'host.containers.internal:8080' as the target in prometheus and http://prometheus:9090 as the promtheus url within grafana.
 
 ### Load testing
